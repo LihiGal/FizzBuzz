@@ -5,7 +5,7 @@ But first, let's get you your own copy of this codebase to work with.
 
 ## Task 0 Forking a public repository on GitHub
 
-You should be currently reading this README on GitHub in the code repository:
+You should currently be reading this README on GitHub in the code repository:
 https://github.com/CSC207-2026F-UofT/FizzBuzz/
 
 1. Make sure you are logged into GitHub. You should see a button that says `Fork` in the top-right corner of the page.
@@ -21,12 +21,12 @@ You can do this by clicking the green `Code` button in your FizzBuzz repository 
 the HTTPS URL which you will see. You can copy it by clicking the little 'copy' button with the two rectangles on it.
 
 4. Open IntelliJ. If you already have a project open, close that project. From the main screen, choose
-the "Clone Repository" option (it might say "Get from VCS" in some versions of IntelliJ).
+the "Clone Repository" option.
 
-5. In the menu that appears, paste the URL. You can either use the default location on your computer to save the project
+5. In the menu that appears, paste the URL. You can either use the default location on your computer to save the project,
 or you can choose the directory. 
 
-> Note: if you later make another clone of this repository, it will require you to choose a new directory to save it to,
+   > Note: if you later make another clone of this repository, it will require you to choose a new directory to save it to,
    since you can't have two directories with the exact same path on your computer.
 
 6. Click the `Clone` button and IntelliJ will set up your project. At this point, it may require you to set up an
@@ -35,19 +35,20 @@ software setup instructions on Quercus.
 
 Now that you have a copy of the code on your computer, you can proceed to work through the rest of the activity
 in IntelliJ. Open this `README.md` file in IntelliJ and in the top-right you can toggle between seeing the editor,
-editor+preview, or just the preview of this markdown file.
+editor+preview, or just the preview of this Markdown file.
 
 > Feel free to take notes in it as you go or just read the preview view of it.
 
-Before we begin, note that IntelliJ is made by the same company as PyCharm, so it should feel quite familiar to you,
-with the only difference being that we'll be working with Java code instead of Python code of course!
+Before we begin, note that IntelliJ is made by the same company as PyCharm, so it should feel quite familiar to you.
+The main difference being that we'll be working with Java code instead of Python code.
 
 ### Important Configuration Step
 
-> IntelliJ might mark the `test_files` directory to be a "sources root" by default since it contains `.java` files.
-> If that directory is blue, you will need to unmark it by right-clicking the directory,
-> scrolling down to the bottom of that menu, and selecting `Mark Directory as -> Unmark as Sources Root`.
+You may notice that we aren't using Maven for this project,
+so the directory structure looks a bit simpler than the course notes.
 
+The `src/lab1/FizzBuzz.java` file is the one source file that you'll start working with.
+The `test/lab1/` folder contains test files for the later extra tasks at the end of this lab activity.
 
 ### Aside: getting to know Markdown
 The Markdown format is commonly used for things like readme files, as it allows for simple syntax to be incorporated,
@@ -60,6 +61,8 @@ Below is a blank checkbox:
 You can edit this file directly to check off these checkboxes throughout the lab to mark things as done.
 Do so now for the checkbox above.
 
+> Markdown also supports the use of html elements which can be used to do some formatting tricks not provided by Markdown
+
 And now, back to Fizz Buzz!
 
 ## Fizz Buzz
@@ -67,7 +70,8 @@ And now, back to Fizz Buzz!
 Fizz Buzz is a game where people sit in a circle. Counting from 1 and going around the circle,
 people say one of four things for a number `i`: `Fizz`, `Buzz`, `Fizz Buzz`, or `i`.
 
-Formally as a coding task, let `i` be an integer greater than zero and output the following:
+Formally as a coding task, let `i` be an integer greater than zero
+and output exactly one of the following:
 
 * If `i` is divisible by 3, print the string `Fizz`
 * If `i` is divisible by 5, print the string `Buzz`
@@ -77,7 +81,8 @@ Formally as a coding task, let `i` be an integer greater than zero and output th
 - [ ] Try a short game of Fizz Buzz with your team now.
 
 ---
-
+<details>
+<summary>Show Fizz Buzz example starting from i = 1</summary>
 So, starting with `i = 1` and counting until `i = 6` we would get:
 
 ```
@@ -88,6 +93,7 @@ Fizz
 Buzz
 Fizz
 ```
+</details>
 
 To solve this programmatically, we must create different outputs based on a number
 we continually increment. It is a classic technical interview question.
@@ -104,7 +110,7 @@ class FizzBuzz {
 
     public static void main(String[] args) {
 
-        for (int i = 1; i < 100; i++) {
+        for (int i = 1; i <= 100; i++) {
 
             // Find out which numbers divide i.
             boolean divisibleBy3 = i % 3 == 0;
@@ -133,18 +139,24 @@ class FizzBuzz {
 }
 ```
 
-- [ ] Open `FizzBuzz.java` in the `src/lab1` directory and click the run button in the top left corner.
+What is the last string that the program will print?
 
-If you don't see this button, you may need to mark `src` as the `Sources Root` for the project. You can do this
-by right-clicking the `src` directory in the `Project` tab and near the bottom of the context menu
-you will see `Mark Directory as`. Hover that and then select `Sources Root`. Then run the file.
-The program may take a second to compile and run, but then you should see that it prints out the first 100 outputs of
-this Fizz Buzz problem.
+- [ ] Open [`src/lab1/FizzBuzz.java`](src/lab1/FizzBuzz.java) and click the run button in the top left corner to run `FizzBuzz` to check your answer.
+
+After you have run FizzBuzz once, you may notice that a green play button appears beside FizzBuzz on the above line.
+This is a feature of IntelliJ. Running the program generates a run configuration; when IntelliJ
+detects the name of a run configuration in a Markdown file, it will give you the option to directly run it.
 
 >Note: you may also need to set your project SDK before you can run your code. There will
 >be a warning message in IntelliJ if this is the case, and you can click the message to set up the SDK.
 
-You may never have seen Java before, but we bet you can puzzle out how it works.
+> If you don't see this button, you may need to mark `src` as the `Sources Root` for the project. You can do this
+> by right-clicking the `src` directory in the `Project` tab and near the bottom of the context menu
+> you will see `Mark Directory as`. Hover that and then select `Sources Root`. Then run the file.
+> The program may take a second to compile and run, but then you should see that it prints out the first several outputs of
+> this Fizz Buzz problem.
+
+Now, let's take a closer look at the actual code!
 
 ## Task 1: Understanding some Java syntax
 
@@ -153,8 +165,8 @@ the code are doing. For example, what's the Java version of Python's `and`? What
 on with that weird `for` loop? As you do this, you might find it useful to write down your
 own implementation in Python to help you begin to create a mapping between the two languages.
 
-- [ ] Make note of any specific Java syntax which stands out to you and compare what you
-come up with the rest of your team. Try to come up with a list of at least five things that
+- [ ] Make note of any specific Java syntax which stands out to you; then compare your observations
+with the rest of your team. Try to come up with a list of at least five things that
 strike you as either similar to or different from Python.
 
 > Tip: IntelliJ works just like PyCharm, so you can place breakpoints and step through the code
@@ -185,28 +197,29 @@ to use a `while` loop instead of a `for` loop.
 How do you know that the code is correct? Part of the problem here is that we can't
 easily test this program. The iteration and the calculation are _tightly coupled_.
 If we refactored this by extracting the body of the loop into a method, we could
-test the calculation for several interesting numbers more easily.
+test the calculation for several interesting numbers more easily though.
 
 ## Task 2: How to refactor this code using IntelliJ
 
-1. Select all the lines **inside the body of the loop**. Don't include the `{` or `}`.
+1. Select all the lines **inside the body of the loop**. Don't include the loop's `{` or `}`.
 
-2. Now select menu item `Refactor —> Extract/Introduce —> Method…`
+2. Near the selected lines, a context menu with the option to `Extract —> Method…` should appear;
+   click this to extract a method.
 
-3. Immediately, type the method name you want, maybe something like `doFizzBuzz`.
+  > Alternatively, you can select the menu item `Refactor —> Extract/Introduce —> Method…` 
+
+3. Immediately, type the method name you want, maybe something like `doFizzBuzz`, and press Enter.
 
 - [ ] Rerun the program to verify that it still works.
 
-That's your first big IntelliJ trick! There are lots more.
-
 > Note: Recall that in Python we were in the habit of defining helpers with a leading underscore to mark them as being
 > private — only to be called by the method using it as a helper and not by anyone outside the class. IntelliJ has done
-> something similar here — when it extracted this method, it used the `private` access modifier for the extracted method.
+> something similar here — when we extracted this method, the new method was given the `private` access modifier.
 > You'll learn more about the various access modifiers in your Java readings soon.
 
 ### Task 2.1: Publishing your changes
 
-Now that you've made your first edits to your code, you should ask git to save these changes for you.
+Now that you've made some edits to your code, you should use git to save these changes to your local repository and then upload them to GitHub.
 
 - [ ] Open the Terminal tab in IntelliJ and type `git status`, it will show you that you have
   modified `FizzBuzz.java` (and possibly this README too!).
@@ -218,7 +231,7 @@ a sequence of three git commands:
    - this tells git to "stage" our changes to `FizzBuzz.java`. If you run `git status` again, you will see
    that `FizzBuzz.java` has a new status.
 2. `git commit -m "refactored to extract helper method"`
-   - this actually records your changes to all "staged" files to your local git repository. You can again
+   - this command takes all "staged" changes and saves them as a commit in your local Git repository. You can again
    run `git status` to see what has happened.
    - And if you run `git log`, you will see a record of _all_ commits made so far in the repository.
    - The `-m "refactored to extract helper method"` is the message briefly documenting what changes were made.
@@ -231,7 +244,7 @@ a sequence of three git commands:
 
 - [ ] Once you execute these commands, you can check your GitHub repository to confirm that the changes have been made there.
 
-- [ ] repeat the above steps for `README.md` (or try using the approach below).
+- [ ] Repeat the above steps for `README.md` (or try using the approach below).
 
 > Tip: You can also use IntelliJ to execute these same steps using the graphical user interface it provides.
 If you have followed the software installation instructions, you should see `Git` in the menu bar at the top.
@@ -332,18 +345,23 @@ This change has now been made on GitHub, but your local copy doesn't know about 
 or you can run `git pull` from the Terminal tab. Once you have done the pull, you should see the commit show up in
 your local repository.
 
+---
+# Extra Exercises
+
+If you have time, you can try out these extra exercises to get more practice.
+
 Let's move on to a couple more small programming challenges for you to try out, which are similar to Fizz Buzz.
 
-# Technical interviews  (and Java practice)
+# Technical interviews (and Java practice)
 
-Technical interviews for developer internships often have you write
-some code. They usually test first-year and second-year material, and many students
+Technical interviews for developer internships often have you either write
+some code or demonstrate your thought process for solving a problem like Fizz Buzz.
+They usually test first-year and second-year material, and many students
 practice these kinds of problems regularly over the academic year to gain confidence in tackling them.
 
-As part of this week's lab, you'll solve one of them, and submit your code
-on MarkUs to get practice with running the self tests on MarkUs.
+Let's try one now!
 
-## Task 4: Multiples of 3 and 5
+## Extra Task 1: Multiples of 3 and 5
 
 - [ ] Right-click on `lab1` and select `New —> Java Class`. Name it `Multiples`.
 
@@ -410,29 +428,12 @@ in this file. You can then click that to conveniently rerun the tests.
 - [ ] If you didn't yet, also `add`, `commit`, and `push` this `Multiples.java` file to save your work
   and upload it to your GitHub repo.
 
-Once the tests are passing and your work is on GitHub, you are ready to submit your code to MarkUs!
-
-To do this, rather than uploading your code directly as you have done in the past, you will
-simply submit the URL that can be used to clone your GitHub repo.
-Given that URL, we can then clone your repo and get our own copy of
-your code to run the tests on.
-
-- [ ] Submit your code to MarkUs
-  - copy the URL from GitHub that you used to clone **your fork of the FizzBuzz repo**.
-  - log into MarkUs and go to the `week1git` assignment.
-  - submit the URL by pasting the URL into the submission box; do not change anything.
-  - once you submit you can then run the self tests to confirm everything is working.
-
-> Make sure your GitHub repo is public and not private if you encounter permission errors when
-> running the self tests. Carefully read any error messages you see on MarkUs to understand
-> what the issue is.
-
-
-### Task 4.2: Overloading `multiples`
+### Extra Task 1.2: Overloading `multiples`
 
 Unlike Python, Java allows us to define multiple methods with the same name,
 but with different numbers and types of parameters. This is called **overloading** and is discussed in the readings.
-Think about how overloading might be useful when writing code in certain situations.
+
+> Think about how overloading might be useful when writing code in certain situations.
 
 For example, in step 5 when we generalized our code, we could have also included an alternative multiples method
 which takes no arguments and simply calls our current multiples method with the default values from the original
@@ -456,66 +457,12 @@ def multiples(n: int = 1000, a: int = 3, b: int = 5) -> int:
 > As you learn more programming languages, it can be interesting to observe how they often
 > provide similar functionality with different syntax.
 
-Once you complete these steps, you can copy the `MultiplesDefaultTest.java` file into the `test/lab1` directory
-and run the tests in it to check your work — debugging as needed.
+Once you complete these steps, you can uncomment the last test in [`test/lab1/MultiplesTest.java`](test/lab1/MultiplesTest.java)
+and run the tests in it to check your work — debugging `MultiplesTest` as needed.
 
-- [ ] Use git to push your updated `Multiples.java` file to GitHub and run the self tests again on MarkUs.
+- [ ] Use git to push your updated `Multiples.java` file to GitHub.
 
-> Since MarkUs already has your GitHub URL, you don't need to "resubmit" that; you can just rerun the self
-> tests on MarkUs, and it will clone a copy of your most recent code from GitHub. Neat!
-
-And that's it for the first lab activity of the term!
-
-# Bonus activities
-There are some additional exercises below for your team to work through if you have time,
-but the above was the core activity for this week.
-
-## Checking your logs
-
-- [ ] Check with your team to see how many commits you each made during the lab in your FizzBuzz repo.
-  You can view the log of commits on GitHub or use the `git log` command to view a summary of the commits to the repository.
-
-## Bonus: Collaboration with git (only if you have time)
-
-If your team has time left in the lab, you might try experimenting with how git works when you have
-a shared repository with multiple people contributing code. We'll be doing some similar exercises in
-the next labs, as this will be important when you work on your projects, so this is optional for now.
-
->Note: you can also work through this on your own by creating multiple clones of your own repository.
-
-We'll briefly summarize two approaches you might take for this:
-
-### Forking and requesting to make a contribution
-
-1. Share your FizzBuzz GitHub repository URL with another student in the class.
-
-2. Have them make a fork of your repository; just as you did at the start of this activity.
-
-3. Have you each make a change to the contents of your GitHub repositories.
-
-4. Anyone with a fork of your repository will see an option to sync with your repository.
-Similarly, they will also see an option to contribute their changes to your original fork.
-The mechanism by which this contribution is done is a **pull request**. As the name suggests,
-you are requesting that, roughly speaking, the original repository do a `git pull` to pull in your commits. We'll talk
-more about pull requests later, but feel free to try it out now by following the instructions that
-appear when you click the button to contribute.
-
-### Giving someone else direct access to your GitHub repository
-
-1. Click on the Settings tab for your repository on GitHub (the right-most tab).
-  In it, there is a Collaborators tab (top-left). Click on it and then you will see a button
-  to add people to your project.
-
-2. Add the other person to your project. They can now clone your repository directly using
-the HTTPS URL as you did during the lab and also push changes.
-
-3. Now, if one of you makes a local change and then pushes it,
-the other one of you will need to do a `git pull` to get the changes. Of course, if you both make changes
-and try to push, there may be conflicting changes which need to be resolved. As mentioned earlier,
-git does a pretty good job telling you what is wrong and can help you resolve any conflicts. We'll talk more about
-this later, as well as other features of git which can help you avoid conflicts.
-
-## Bonus: Reduce a number to 0
+## Extra Task 2: Reduce a number to 0
 
 Here is one more small coding problem similar to the Multiples problem for extra practice.
 
@@ -536,17 +483,15 @@ a helper method called `reduce`. Then generalize that helper to take in `n` as a
 Once you complete these steps, you can copy the `ReduceTest.java` file into the `test/lab1` directory
 and run the tests — debugging as needed.
 
-- [ ] Finally, `add`, `commit`, and `push` your `Reduce.java` — then rerun the self tests on MarkUs.
+- [ ] Finally, `add`, `commit`, and `push` your `Reduce.java`.
 
 ## Further practice
 
-[LeetCode](https://leetcode.com) is a very popular source of practice problems.
-[CoderByte](https://www.coderbyte.com/) is another.
-If you are looking to apply for a software developer internship, we recommend that you practice these kinds of
-problems over the year. These platforms also support various programming languages, so solving these
+[LeetCode](https://leetcode.com/problemset/) is a very popular source of practice problems.
+[CoderByte](https://coderbyte.com/developers) is another.
+These platforms also support various programming languages, so solving these
 problems is a great way to practice Java or any other new language you later want to learn.
 This term, you might find it interesting to try solving some problems first in Python and then in Java.
-
 
 ## Extra to think about
 
@@ -554,4 +499,50 @@ What is the runtime of your solution for the Multiples problem, in terms of `n`?
 We aren't testing your code for efficiency in this assignment, but if your solution is linear in `n`, then
 we encourage you to think about how it could be made more efficient. This is good practice for
 these kinds of technical interview questions!
-# FizzBuzz
+
+### Checking your logs
+
+- [ ] Check with your team to see how many commits you each made during the lab in your FizzBuzz repo.
+  You can view the log of commits on GitHub or use the `git log` command to view a summary of the commits in the repository.
+
+---
+
+## Bonus: Collaboration with git (only if you have time)
+
+If your team has time left in the lab, you might try experimenting with how git works when you have
+a shared repository with multiple people contributing code. We'll be doing some similar exercises in
+the next labs, as this will be important when you work on your projects, so this is optional for now.
+
+>Note: you can also work through this on your own by creating multiple clones of your own repository.
+
+We'll briefly summarize two approaches you might take for this:
+
+### Forking and requesting to make a contribution
+
+1. Share your FizzBuzz GitHub repository URL with another student.
+
+2. Have them make a fork of your repository; just as you did at the start of this activity.
+
+3. Have you each make a change to the contents of your GitHub repositories.
+
+4. Anyone with a fork of your repository will see an option to sync with your repository.
+   Similarly, they will also see an option to contribute their changes to your original fork.
+   The mechanism by which this contribution is done is a **pull request**. As the name suggests,
+   you are requesting that, roughly speaking, the original repository do a `git pull` to pull in your commits. We'll talk
+   more about pull requests later, but feel free to try it out now by following the instructions that
+   appear when you click the button to contribute.
+
+### Giving someone else direct access to your GitHub repository
+
+1. Click on the Settings tab for your repository on GitHub (the right-most tab).
+   In it, there is a Collaborators tab (top-left). Click on it, and then you will see a button
+   to add people to your project.
+
+2. Add the other person to your project. They can now clone your repository directly using
+   the HTTPS URL as you did during the lab and also push changes.
+
+3. Now, if one of you makes a local change and then pushes it,
+   the other will need to do a `git pull` to get the changes. Of course, if you both make changes
+   and try to push, there may be conflicting changes which need to be resolved. As mentioned earlier,
+   git does a pretty good job telling you what is wrong and can help you resolve any conflicts. We'll talk more about
+   this later, as well as other features of git which can help you avoid conflicts.
