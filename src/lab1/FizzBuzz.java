@@ -1,15 +1,15 @@
 package lab1;
 
-class FizzBuzz {
+public class FizzBuzz {
 
     public static void main(String[] args) {
     int i = 1;
     while (i++<=99){
-        dofizzbuzz(i);
+        doFizzBuzz(i);
     }
     }
 
-    private static void dofizzbuzz(int i) {
+    public static void doFizzBuzz(int i) {
         // Find out which numbers divide i.
         boolean divisibleBy3 = i % 3 == 0;
         boolean divisibleBy5 = i % 5 == 0;
@@ -33,7 +33,11 @@ class FizzBuzz {
 
         }
     }
-}
+
+
+
+    }
+
 
 /* git add src/lab1/FizzBuzz.java
 * git commit -m "refactored to extract helper method"
